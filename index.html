@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Crystal Factory</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --container-bg: white;
+            --container-shadow: rgba(0,0,0,0.1);
+            --title-color: #2c5aa0;
+            --tab-border: #2c5aa0;
+            --tab-inactive: #666;
+            --button-bg: #2c5aa0;
+            --button-hover: #1e3d6b;
+            --dropdown-bg: white;
+            --dropdown-border: #ddd;
+            --option-hover: #f5f5f5;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --container-bg: #2d3748;
+            --container-shadow: rgba(0,0,0,0.5);
+            --title-color: #667eea;
+            --tab-border: #667eea;
+            --tab-inactive: #a0aec0;
+            --button-bg: #667eea;
+            --button-hover: #5a67d8;
+            --dropdown-bg: #2d3748;
+            --dropdown-border: #4a5568;
+            --option-hover: #4a5568;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            background: var(--dropdown-bg);
+            border: 2px solid var(--dropdown-border);
+            border-radius: 25px;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-slider {
+            position: relative;
+            width: 80px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .theme-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            z-index: 2;
+            transition: opacity 0.3s;
+        }
+
+        .theme-slider-bg {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 36px;
+            height: 36px;
+            background: #888;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .theme-slider-bg {
+            transform: translateX(50px);
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px var(--container-shadow);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        h1 {
+            color: var(--title-color);
+            text-align: center;
+            margin-bottom: 30px;
+            transition: color 0.3s;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--tab-border);
+            margin-bottom: 30px;
+            transition: border-color 0.3s;
+        }
+
+        .tab-btn {
+            background-color: transparent;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--tab-inactive);
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--title-color);
+        }
+
+        .tab-btn.active {
+            color: var(--title-color);
+            border-bottom-color: var(--tab-border);
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .description {
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        .description a {
+            color: var(--title-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .description a:hover {
+            text-decoration: underline;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--button-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()" id="dark-mode-toggle">
+        <div class="theme-slider">
+            <div class="theme-slider-bg"></div>
+            <img src="" alt="Light mode" class="theme-icon" id="solrock-icon">
+            <img src="" alt="Dark mode" class="theme-icon" id="lunatone-icon">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Pokémon Crystal Factory</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'about')">About</button>
+            <button class="tab-btn" onclick="openTab(event, 'details')">Details</button>
+            <button class="tab-btn" onclick="openTab(event, 'projects')">Other Projects</button>
+        </div>
+        
+        <div id="about" class="tab-content active">
+            <div class="description">
+                <p>
+                    This is a ROM hack that creates the Battle Factory in Pokémon Crystal, by rewriting the vanilla Battle Tower code. This ROM hack
+                    only includes the Factory, so the player has access to the Factory immediately
+                    after leaving their house, but cannot access the rest of the game. The Factory mechanics are most similar to Pokémon Emerald's Battle Factory,
+                    but with some differences due to Gen 2 mechanics as well as different Pokémon sets to ensure a large enough pool of Pokémon. Check the "details"
+                    tab if you want a full list of features.
+                </p>
+                <p>
+                    The download link is below, the file is just a regular .gbc file so you can play it the same way you would play vanilla Pokémon Crystal.
+                </p>
+            </div>
+            
+            <div class="download-section">
+                <a href="crystalfactory.gbc" class="download-btn" download>Download Pokémon Crystal Factory</a>
+            </div>
+        </div>
+        
+        <div id="details" class="tab-content">
+            <div class="description">
+                <p>
+                    Here's some more detailed information about the Crystal Factory mechanics:
+                </p>
+                <p>
+                    All Pokémon have four different sets. Rounds 1-4, each Pokémon will only be using the corresponding set (Round 1 is only Set 1 Pokémon, Round 2 is 
+                    only Set 2, etc.). Starting at Round 5, all sets are possible for both you and your opponents, and legendaries + Dragonite also become available.
+                    Unlike Gen 3/4, there is no boss, so every round past Round 5 is basically the same.
+                </p>
+                <p>
+                    DVs of table Pokémon increase by 3 each round, starting at 3 for Round 1 and maxing out at 15 on Round 5. Opponents always have 3 DVs. Unlike Gen 3/4,
+                    there are no elevations based on swap count. Note that in Gen 2, the HP DV is based on the other DVs, so it actually alternates between 0 and 15 depending on
+                    if the other DVs are even or odd (if all other DVs are odd, HP is 15, if all other DVs are even, as in Rounds 2 and 4, the HP DV is 0). Also, gender is 
+                    determined by the species gender ratio combined with the Attack DV, meaning that your Pokémon are more likely to be male as the DVs increase, whereas opponents are
+                    more likely to have female Pokémon.
+                </p>
+                    
+                <p>
+                    Gen 2 uses something called "Stat Exp", which is different than EVs in a couple ways. First, it's possible to max out the Stat Exp for every stat,
+                    resulting in Pokémon being much bulkier compared to Gen 3+. Second, for compatibility with Gen 1, the 
+                    Stat Exp for Special Attack and Special Defense is shared. For now, all sets have no Stat Exp at all, but this is subject to change if people don't like it.
+                </p>
+                <p>
+                    I plan on releasing more information and tools later, such as the spreadsheet for all of the sets, a damage calc with the stats pre-loaded, and a Battle
+                    Factory Buddy tool, similar to the existing Battle Factory tools, but for now I'm just trying to see if people like the Gen 2 Factory, if there are any bugs,
+                    if there are changes I should make, and so on.
+                </p>
+            </div>
+        </div>
+        
+        <div id="projects" class="tab-content">
+            <div class="description">
+                <p>
+                    To see other projects I've made, check out <a href="https://njkmath.github.io/projects/" target="_blank">https://njkmath.github.io/projects/</a> 
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Set dark mode as default
+        let isDarkMode = true;
+        document.body.setAttribute('data-theme', 'dark');
+
+        // Load theme icons on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            loadThemeImages();
+        });
+
+        async function loadThemeImages() {
+            const solrockIcon = document.getElementById('solrock-icon');
+            const lunatoneIcon = document.getElementById('lunatone-icon');
+            
+            // Set alt text as fallback
+            solrockIcon.alt = '☀️';
+            lunatoneIcon.alt = '🌙';
+            
+            // Load images from DarkModeIcons folder
+            try {
+                solrockIcon.src = 'DarkModeIcons/solrock.png';
+                lunatoneIcon.src = 'DarkModeIcons/lunatone.png';
+            } catch (error) {
+                console.warn('Failed to load theme images:', error);
+            }
+        }
+
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            const tabBtns = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
