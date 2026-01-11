@@ -474,7 +474,7 @@ var MOVES_GSC = {
 		"category": "Special"
 	},
 	"Return": {
-		"bp": 0,
+		"bp": 102,
 		"type": "Normal",
 		"category": "Physical"
 	},

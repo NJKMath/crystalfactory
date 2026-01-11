@@ -292,6 +292,9 @@ function loadSet(setName, side) {
     
     // Trigger stat calculation
     calculateStats(side);
+    
+    // Trigger damage calculation
+    setTimeout(updateDamageDisplay, 100);
 }
 
 function calculateStats(side) {
@@ -417,6 +420,7 @@ function initializeDefaultValues() {
             const panel = this.closest('.poke-info');
             const side = panel.id === 'p1' ? 'L' : 'R';
             calculateStats(side);
+            updateDamageDisplay();
         });
     });
     
@@ -425,6 +429,7 @@ function initializeDefaultValues() {
         radio.addEventListener('change', function() {
             calculateStats('L');
             calculateStats('R');
+            updateDamageDisplay();
         });
     });
     
@@ -433,6 +438,48 @@ function initializeDefaultValues() {
         radio.addEventListener('change', function() {
             calculateStats('L');
             calculateStats('R');
+            updateDamageDisplay();
         });
+    });
+    
+    // Add event listeners for things that trigger damage recalculation
+    // Boosts
+    document.querySelectorAll('.boost').forEach(function(select) {
+        select.addEventListener('change', updateDamageDisplay);
+    });
+    
+    // Move changes
+    document.querySelectorAll('.move-selector, .move-bp, .move-type, .move-crit').forEach(function(elem) {
+        elem.addEventListener('change', updateDamageDisplay);
+    });
+    
+    // Current HP changes (affects KO calculations)
+    document.querySelectorAll('.current-hp').forEach(function(elem) {
+        elem.addEventListener('input', updateDetailedDamageDisplay);
+    });
+    
+    // Field conditions
+    document.querySelectorAll('input[name="gscWeather"], #reflectL, #reflectR, #lightScreenL, #lightScreenR, #foresightL, #foresightR').forEach(function(elem) {
+        elem.addEventListener('change', updateDamageDisplay);
+    });
+    
+    // Move selection radio buttons
+    document.querySelectorAll('input[name="resultMove"]').forEach(function(radio) {
+        radio.addEventListener('change', updateDetailedDamageDisplay);
+    });
+    
+    // Reset boost buttons
+    document.getElementById('resetBoostsL').addEventListener('click', function() {
+        document.querySelectorAll('#p1 .boost').forEach(function(select) {
+            select.value = '0';
+        });
+        updateDamageDisplay();
+    });
+    
+    document.getElementById('resetBoostsR').addEventListener('click', function() {
+        document.querySelectorAll('#p2 .boost').forEach(function(select) {
+            select.value = '0';
+        });
+        updateDamageDisplay();
     });
 }
