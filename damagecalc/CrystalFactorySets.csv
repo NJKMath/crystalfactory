@@ -1,0 +1,386 @@
+Pokemon,Set,Item,Move 1,Move 2,Move 3,Move 4,Round5pOnly
+Aerodactyl,1,King's Rock,AncientPower,DragonBreath,Wing Attack,Roar,no
+Aerodactyl,2,King's Rock,Hyper Beam,Earthquake,Wing Attack,AncientPower,no
+Aerodactyl,3,King's Rock,Double-Edge,Steel Wing,Flamethrower,DragonBreath,no
+Aerodactyl,4,King's Rock,Double-Edge,Earthquake,Flamethrower,Bite,no
+Alakazam,1,Focus Band,ThunderPunch,Fire Punch,Ice Punch,Thunder Wave,no
+Alakazam,2,MiracleBerry,Psychic,Disable,Thunder Wave,Recover,no
+Alakazam,3,Leftovers,Psychic,DynamicPunch,Recover,Ice Punch,no
+Alakazam,4,BrightPowder,Psychic,ThunderPunch,Fire Punch,Ice Punch,no
+Ampharos,1,Magnet,Thunder,Rain Dance,Thunder Wave,Attract,no
+Ampharos,2,BrightPowder,ThunderPunch,Fire Punch,DynamicPunch,Thunder Wave,no
+Ampharos,3,Focus Band,Thunderbolt,Body Slam,Iron Tail,Rock Smash,no
+Ampharos,4,MiracleBerry,Thunderbolt,Fire Punch,Thunder Wave,Reflect,no
+Arcanine,1,King's Rock,Flamethrower,ExtremeSpeed,Crunch,Body Slam,no
+Arcanine,2,MiracleBerry,Fire Blast,Sunny Day,Crunch,Roar,no
+Arcanine,3,Mint Berry,Flamethrower,Double-Edge,Sleep Talk,Rest,no
+Arcanine,4,Scope Lens,Fire Blast,Double-Edge,Crunch,ExtremeSpeed,no
+Articuno,1,MiracleBerry,Ice Beam,BubbleBeam,Icy Wind,Roar,yes
+Articuno,2,Leftovers,Substitute,Toxic,Double Team,Blizzard,yes
+Articuno,3,BrightPowder,Ice Beam,Return,Steel Wing,Reflect,yes
+Articuno,4,Mint Berry,Blizzard,Double-Edge,Rest,Reflect,yes
+Bellossom,1,Bitter Berry,Petal Dance,Sludge Bomb,Sunny Day,Synthesis,no
+Bellossom,2,BrightPowder,Solarbeam,Sludge Bomb,Sunny Day,Synthesis,no
+Bellossom,3,Leftovers,Giga Drain,Sludge Bomb,Toxic,Synthesis,no
+Bellossom,4,Scope Lens,Double-Edge,Sludge Bomb,Giga Drain,Swords Dance,no
+Blastoise,1,Leftovers,Hydro Pump,Rain Dance,Bite,Seismic Toss,no
+Blastoise,2,Leftovers,Hydro Pump,Mega Kick,Submission,Mirror Coat,no
+Blastoise,3,Focus Band,Surf ,Earthquake,Ice Beam,Counter,no
+Blastoise,4,Focus Band,Surf ,Earthquake,Ice Beam,Mirror Coat,no
+Blissey,1,BrightPowder,Toxic,Double Team,Sing,Softboiled,no
+Blissey,2,Leftovers,Seismic Toss,Sing,Attract,Substitute,no
+Blissey,3,Focus Band,Flamethrower,Ice Beam,Thunderbolt,Softboiled,no
+Blissey,4,Focus Band,Ice Beam,Toxic,Counter,Softboiled,no
+Celebi,1,Scope Lens,Giga Drain,Psychic,Shadow Ball,AncientPower,yes
+Celebi,2,Miracle Seed,Solarbeam,Psychic,Shadow Ball,Sunny Day,yes
+Celebi,3,Leftovers,Giga Drain,Psychic,Leech Seed,Toxic,yes
+Celebi,4,Mint Berry,Return,Shadow Ball,Curse,Rest,yes
+Charizard,1,Focus Band,Fire Blast,Sunny Day,Roar,Scary Face,no
+Charizard,2,BrightPowder,Earthquake,Wing Attack,Swords Dance,SmokeScreen,no
+Charizard,3,MiracleBerry,Flamethrower,Outrage,Bite,Rock Slide,no
+Charizard,4,Mint Berry,Earthquake,Wing Attack,Belly Drum,Rest,no
+Clefable,1,Leftovers,Metronome,Double Team,Reflect,Present,no
+Clefable,2,Focus Band,Iron Tail,Moonlight,Double Team,Present,no
+Clefable,3,MiracleBerry,Thunderbolt,Ice Beam,Flamethrower,BubbleBeam,no
+Clefable,4,Focus Band,Return,Psychic,Shadow Ball,Moonlight,no
+Cloyster,1,NeverMeltIce,Ice Beam,BubbleBeam,Supersonic,Protect,no
+Cloyster,2,Leftovers,Clamp,Toxic,Double Team,Protect,no
+Cloyster,3,Mint Berry,Surf,Ice Beam,Barrier,Rest,no
+Cloyster,4,Scope Lens,Surf,Ice Beam,Double-Edge,Explosion,no
+Crobat,1,King's Rock,Wing Attack,Bite,Astonish,Screech,no
+Crobat,2,Leftovers,Toxic,Giga Drain,Confuse Ray,Double Team,no
+Crobat,3,King's Rock,Wing Attack,Double-Edge,Steel Wing,Screech,no
+Crobat,4,MiracleBerry,Wing Attack,Thief,Haze,Toxic,no
+Dewgong,1,NeverMeltIce,Ice Beam,Icy Wind,Headbutt,Disable,no
+Dewgong,2,Leftovers,Blizzard,Double-Edge,Encore,Disable,no
+Dewgong,3,Mint Berry,Horn Drill,Double Team,Sleep Talk,Rest,no
+Dewgong,4,MiracleBerry,Horn Drill,Ice Beam,Surf,Toxic,no
+Dodrio,1,Mint Berry,Tri Attack,Drill Peck,Sleep Talk,Rest,no
+Dodrio,2,King's Rock,Drill Peck,Double-Edge,Faint Attack,Protect,no
+Dodrio,3,MiracleBerry,Double-Edge,Drill Peck,Steel Wing,Faint Attack,no
+Dodrio,4,Pink Bow,Flail,Endure,Drill Peck,Return,no
+Donphan,1,Mint Berry,Earthquake,AncientPower,Swagger,Rest,no
+Donphan,2,Quick Claw,Flail,Endure,Earthquake,Rollout,no
+Donphan,3,Quick Claw,Earthquake,Double-Edge,Rollout,Water Gun,no
+Donphan,4,Quick Claw,Earthquake,Body Slam,AncientPower,Toxic,no
+Dragonite,1,BrightPowder,Return,Wing Attack,Steel Wing,ExtremeSpeed,yes
+Dragonite,2,MiracleBerry,Outrage,Double-Edge,Fire Blast,Fly,yes
+Dragonite,3,MiracleBerry,Outrage,Thunderbolt,Surf,Flamethrower,yes
+Dragonite,4,Quick Claw,Thunder,Surf,Rain Dance,Dragonbreath,yes
+Dugtrio,1,Soft Sand,Earthquake,Tri Attack,Slash,Mud-Slap,no
+Dugtrio,2,King's Rock,Earthquake,AncientPower,Faint Attack,Tri Attack,no
+Dugtrio,3,King's Rock,Earthquake,Double-Edge,Sludge Bomb,Fissure,no
+Dugtrio,4,King's Rock,Earthquake,Double-Edge,Rock Slide,Fissure,no
+Electabuzz,1,PRZCureBerry,Thunderbolt,Thunder Wave,Karate Chop,Light Screen,no
+Electabuzz,2,Leftovers,Thunder,Rain Dance,Attract,Cross Chop,no
+Electabuzz,3,MiracleBerry,Fire Punch,Ice Punch,Thunderbolt,Cross Chop,no
+Electabuzz,4,Scope Lens,Thunderbolt,Mega Kick,Psychic,Cross Chop,no
+Electrode,1,Focus Band,Thunderbolt,Light Screen,Swift,Protect,no
+Electrode,2,BrightPowder,Thunder,Rain Dance,Double Team,Swagger,no
+Electrode,3,PRZCureBerry,Explosion,Thunderbolt,Thunder Wave,Endure,no
+Electrode,4,MiracleBerry,Explosion,Thunderbolt,Thunder Wave,Mirror Coat,no
+Entei,1,Mint Berry,Flamethrower,Double Team,Roar,Rest,yes
+Entei,2,BrightPowder,Fire Blast,Sunny Day,Solarbeam,Bite,yes
+Entei,3,Scope Lens,Flamethrower,Bite,Return,Iron Tail,yes
+Entei,4,Scope Lens,Flamethrower,Return,Iron Tail,Dig,yes
+Espeon,1,MiracleBerry,Psychic,Charm,Focus Energy,Baton Pass,no
+Espeon,2,Mint Berry,Psychic,Shadow Ball,Charm,Rest,no
+Espeon,3,MiracleBerry,Psychic,Bite,Morning Sun,Reflect,no
+Espeon,4,BrightPowder,Psychic,Bite,Attract,Morning Sun,no
+Exeggutor,1,Quick Claw,Solarbeam,Sunny Day,Synthesis,Reflect,no
+Exeggutor,2,Mint Berry,Return,Curse,Sleep Powder,Rest,no
+Exeggutor,3,Leftovers,Leech Seed,Giga Drain,Toxic,Explosion,no
+Exeggutor,4,BrightPowder,Psychic,Giga Drain,Sludge Bomb,Explosion,no
+Fearow,1,Sharp Beak,Drill Peck,Tri Attack,Quick Attack,Mud-Slap,no
+Fearow,2,Focus Band,Drill Peck,Tri Attack,Attract,Pursuit,no
+Fearow,3,Scope Lens,Drill Peck,Return,Steel Wing,Faint Attack,no
+Fearow,4,MiracleBerry,Drill Peck,Double-Edge,Steel Wing,Sky Attack,no
+Feraligatr,1,MiracleBerry,Surf,Rain Dance,Slash,Roar,no
+Feraligatr,2,Quick Claw,Surf,Ice Punch,Iron Tail,Scary Face,no
+Feraligatr,3,Scope Lens,Hydro Pump,Crunch,Earthquake,Rock Slide,no
+Feraligatr,4,Scope Lens,Hydro Pump,Ice Beam,Earthquake,Slash,no
+Flareon,1,Gold Berry,Flamethrower,Roar,Bite,Sand-Attack,no
+Flareon,2,Quick Claw,Curse,Attract,Double-Edge,Shadow Ball,no
+Flareon,3,Quick Claw,Shadow Ball,Flail,Endure,Fire Blast,no
+Flareon,4,Quick Claw,Fire Blast,Sunny Day,Double-Edge,Shadow Ball,no
+Forretress,1,Focus Band,Double-Edge,Rollout,Reflect,Spikes,no
+Forretress,2,MiracleBerry,Double-Edge,Rollout,Defense Curl,Protect,no
+Forretress,3,Focus Band,Explosion,Sunny Day,Solarbeam,Return,no
+Forretress,4,Mint Berry,Return,Curse,Double Team,Rest,no
+Gengar,1,Leftovers,Dream Eater,Hypnosis,Confuse Ray,Attract,no
+Gengar,2,Leftovers,Shadow Ball,Return,Swagger,Psych Up,no
+Gengar,3,Quick Claw,Psychic,Thunderbolt,Giga Drain,Night Shade,no
+Gengar,4,MiracleBerry,Psychic,Ice Punch,Fire Punch,Destiny Bond,no
+Girafarig,1,MiracleBerry,Psychic,Return,Agility,Baton Pass,no
+Girafarig,2,Mint Berry,Return,Earthquake,Curse,Rest,no
+Girafarig,3,Scope Lens,Psychic,Return,Crunch,Thunderbolt,no
+Girafarig,4,Scope Lens,Psychic,Return,Shadow Ball,Earthquake,no
+Gligar,1,Scope Lens,Metal Claw,Sludge Bomb,Wing Attack,Quick Attack,no
+Gligar,2,Quick Claw,Earthquake,Wing Attack,Guillotine,Counter,no
+Gligar,3,Mint Berry,Earthquake,Wing Attack,Curse,Rest,no
+Gligar,4,Scope Lens,Earthquake,Wing Attack,Sludge Bomb,Guillotine,no
+Golduck,1,Scope Lens,Hydro Pump,Dig,Cross Chop,Light Screen,no
+Golduck,2,MiracleBerry,Cross Chop,Surf,Swagger,Psych Up,no
+Golduck,3,Scope Lens,Hydro Pump,Cross Chop,Blizzard,Protect,no
+Golduck,4,Scope Lens,Surf,Cross Chop,Ice Beam,Psychic,no
+Golem,1,Quick Claw,Earthquake,Body Slam,Counter,Rock Throw,no
+Golem,2,Mint Berry,Earthquake,Rollout,Defense Curl,Rest,no
+Golem,3,Quick Claw,Explosion,Earthquake,Flamethrower,DynamicPunch,no
+Golem,4,Quick Claw,Explosion,Earthquake,Double-Edge,Rock Slide,no
+Granbull,1,Quick Claw,Return,Sludge Bomb,Fire Punch,Heal Bell,no
+Granbull,2,MiracleBerry,Fire Punch,Ice Punch,Thunderbolt,Return,no
+Granbull,3,Mint Berry,Return,Shadow Ball,Curse,Rest,no
+Granbull,4,MiracleBerry,Return,Shadow Ball,Sludge Bomb,Hyper Beam,no
+Gyarados,1,MiracleBerry,Return,Bite,Rock Smash,Curse,no
+Gyarados,2,Leftovers,Hydro Pump,Thunderbolt,Fire Blast,Blizzard,no
+Gyarados,3,Quick Claw,Surf,Thunder,Rain Dance,Return,no
+Gyarados,4,Mint Berry,Return,Surf,Curse,Rest,no
+Gyarados,5,Bitter Berry,Thrash,Bite,Hydro Pump,Twister,yes
+Heracross,1,Focus Band,Megahorn,Rock Smash,Headbutt,Counter,no
+Heracross,2,MiracleBerry,Megahorn,Earthquake,Attract,Curse,no
+Heracross,3,BrightPowder,Megahorn,Earthquake,Headbutt,Rock Smash,no
+Heracross,4,Focus Band,Megahorn,Earthquake,Reversal,Endure,no
+Houndoom,1,Focus Band,Flamethrower,Shadow Ball,Counter,Mud-Slap,no
+Houndoom,2,MiracleBerry,Fire Blast,Crunch,Roar,Rest,no
+Houndoom,3,Scope Lens,Fire Blast,Shadow Ball,Sludge Bomb,Crunch,no
+Houndoom,4,Focus Band,Flamethrower,Solarbeam,Crunch,Sunny Day,no
+Hypno,1,TwistedSpoon,ThunderPunch,Fire Punch,Ice Punch,Hypnosis,no
+Hypno,2,TwistedSpoon,Hypnosis,Nightmare,Dream Eater,Psychic,no
+Hypno,3,MiracleBerry,Psych Up,Swagger,Mega Kick,Shadow Ball,no
+Hypno,4,MiracleBerry,Psychic,ThunderPunch,Fire Punch,Ice Punch,no
+Jolteon,1,PRZCureBerry,Thunderbolt,Thunder Wave,Attract,Protect,no
+Jolteon,2,Scope Lens,Thunderbolt,Headbutt,Double Kick,Roar,no
+Jolteon,3,BrightPowder,Thunderbolt,Thunder Wave,Agility,Baton Pass,no
+Jolteon,4,King's Rock,Thunderbolt,Thunder Wave,Bite,Shadow Ball,no
+Jumpluff,1,Leftovers,Giga Drain,Leech Seed,Double Team,Synthesis,no
+Jumpluff,2,BrightPowder,Solarbeam,Sunny Day,Leech Seed,Synthesis,no
+Jumpluff,3,Leftovers,Toxic,Leech Seed,Double Team,Giga Drain,no
+Jumpluff,4,Mint Berry,Return,Sleep Powder,Curse,Rest,no
+Jynx,1,Gold Berry,Ice Beam,Thief,Lovely Kiss,Attract,no
+Jynx,2,BrightPowder,Perish Song,Mean Look,Lovely Kiss,Protect,no
+Jynx,3,Quick Claw,Dream Eater,Lovely Kiss,Attract,Substitute,no
+Jynx,4,MiracleBerry,Psychic,Ice Beam,Lovely Kiss,BubbleBeam,no
+Kabutops,1,Quick Claw,Surf,Ice Beam,AncientPower,Giga Drain,no
+Kabutops,2,Scope Lens,Surf,Ice Beam,AncientPower,Double-Edge,no
+Kabutops,3,MiracleBerry,Hydro Pump,Ice Beam,Rain Dance,Giga Drain,no
+Kabutops,4,Leftovers,Return,AncientPower,Swords Dance,Substitute,no
+Kangaskhan,1,Focus Band,Dizzy Punch,Earthquake,Counter,Rock Smash,no
+Kangaskhan,2,Mint Berry,Dizzy Punch,Shadow Ball,Attract,Rest,no
+Kangaskhan,3,Focus Band,Reversal,Endure,Thunderbolt,Earthquake,no
+Kangaskhan,4,BrightPowder,Mega Kick,Earthquake,Rock Slide,Shadow Ball,no
+Kingdra,1,MiracleBerry,Hydro Pump,Dragonbreath,Icy Wind,Attract,no
+Kingdra,2,Mint Berry,Surf,Ice Beam,Dragonbreath,Rest,no
+Kingdra,3,Focus Band,Flail,Hydro Pump,Agility,Endure,no
+Kingdra,4,Mint Berry,Double-Edge,Ice Beam,Curse,Rest,no
+Lanturn,1,PRZCureBerry,Surf,Confuse Ray,Attract,Thunder Wave,no
+Lanturn,2,Focus Band,Flail,Endure,Thunderbolt,Surf,no
+Lanturn,3,BrightPowder,Hydro Pump,Thunder,Confuse Ray,Rain Dance,no
+Lanturn,4,MiracleBerry,Surf,Thunderbolt,Ice Beam,Confuse Ray,no
+Lapras,1,Leftovers,Surf,Attract,Confuse Ray,Sing,no
+Lapras,2,Quick Claw,Surf,Ice Beam,Body Slam,Sing,no
+Lapras,3,BrightPowder,Double-Edge,Psychic,Confuse Ray,Curse,no
+Lapras,4,MiracleBerry,Surf,Ice Beam,Thunderbolt,Psychic,no
+Machamp,1,Scope Lens,Cross Chop,Rock Slide,Counter,Scary Face,no
+Machamp,2,Mint Berry,Cross Chop,Earthquake,Curse,Rest,no
+Machamp,3,Quick Claw,Cross Chop,Fire Blast,ThunderPunch,Ice Punch,no
+Machamp,4,Scope Lens,Cross Chop,Earthquake,Flamethrower,Rock Slide,no
+Magcargo,1,Leftovers,Flamethrower,Rollout,Defense Curl,Body Slam,no
+Magcargo,2,Quick Claw,Fire Blast,Sunny Day,Rock Slide,Earthquake,no
+Magcargo,3,Quick Claw,Flamethrower,Rock Slide,Earthquake,Body Slam,no
+Magcargo,4,Mint Berry,Earthquake,Rock Slide,Curse,Rest,no
+Magmar,1,Ice Berry,Flamethrower,Smokescreen,Cross Chop,Barrier,no
+Magmar,2,Quick Claw,Fire Blast,Smokescreen,ThunderPunch,Confuse Ray,no
+Magmar,3,Scope Lens,Mega Kick,Cross Chop,Iron Tail,Counter,no
+Magmar,4,Scope Lens,Flamethrower,Psychic,Cross Chop,ThunderPunch,no
+Magneton,1,Leftovers,Thunderbolt,Tri Attack,Screech,Reflect,no
+Magneton,2,Quick Claw,Thunder,Rain Dance,Tri Attack,Thunder Wave,no
+Magneton,3,BrightPowder,Zap Cannon,Lock-On,Double-Edge,Thunder Wave,no
+Magneton,4,Mint Berry,Thunderbolt,Toxic,Substitute,Rest,no
+Mantine,1,Mystic Water,Surf,Wing Attack,Icy Wind,Attract,no
+Mantine,2,Mint Berry,Surf,Wing Attack,Ice Beam,Rest,no
+Mantine,3,Mint Berry,Return,Wing Attack,Curse,Rest,no
+Mantine,4,Leftovers,Surf,Wing Attack,Double Team,Toxic,no
+Marowak,1,Thick Club,Bonemerang,Rock Slide,Icy Wind,Headbutt,no
+Marowak,2,Thick Club,Earthquake,Rock Slide,Swords Dance,Icy Wind,no
+Marowak,3,Thick Club,Earthquake,Rock Slide,Swords Dance,Submission,no
+Marowak,4,Thick Club,Earthquake,Rock Slide,Swords Dance,Mega Kick,no
+Meganium,1,BrightPowder,Solarbeam,Sunny Day,Light Screen,Synthesis,no
+Meganium,2,Leftovers,Leech Seed,Toxic,Double Team,Synthesis,no
+Meganium,3,Focus Band,Earthquake,Endure,Flail,Giga Drain,no
+Meganium,4,BrightPowder,Giga Drain,Earthquake,AncientPower,Body Slam,no
+Mew,1,MiracleBerry,Psychic,Flamethrower,Ice Beam,Thunderbolt,yes
+Mew,2,Leftovers,Return,Earthquake,Shadow Ball,Swords Dance,yes
+Mew,3,Scope Lens,Psychic,Thunderbolt,Earthquake,Shadow Ball,yes
+Mew,4,MiracleBerry,Solarbeam,Flamethrower,Sunny Day,Explosion,yes
+Miltank,1,Focus Band,Body Slam,Shadow Ball,Bide,Milk Drink,no
+Miltank,2,Leftovers,Seismic Toss,Shadow Ball,Attract,Mud-Slap,no
+Miltank,3,Focus Band,Reversal,Endure,Earthquake,Shadow Ball,no
+Miltank,4,MiracleBerry,Return,Curse,Double Team,Milk Drink,no
+Misdreavus,1,Focus Band,Pain Split,Shadow Ball,Confuse Ray,Thief,no
+Misdreavus,2,Leftovers,Psychic,Attract,Thief,Confuse Ray,no
+Misdreavus,3,BrightPowder,Perish Song,Mean Look,Attract,Confuse Ray,no
+Misdreavus,4,MiracleBerry,Destiny Bond,Psychic,Shadow Ball,Thunderbolt,no
+Moltres,1,MiracleBerry,Flamethrower,Wing Attack,Mud-Slap,Roar,yes
+Moltres,2,Leftovers,Fire Blast,Wing Attack,Double Team,Protect,yes
+Moltres,3,Scope Lens,Flamethrower,Wing Attack,Double-Edge,Steel Wing,yes
+Moltres,4,Mint Berry,Return,Wing Attack,Curse,Rest,yes
+Mr. Mime,1,MiracleBerry,Psychic,ThunderPunch,Thief,Reflect,no
+Mr. Mime,2,Gold Berry,Baton Pass,Swagger,Psych Up,Psychic,no
+Mr. Mime,3,Leftovers,Psychic,Reflect,Light Screen,Thunder Wave,no
+Mr. Mime,4,BrightPowder,Psychic,Thunderbolt,Fire Punch,Ice Punch,no
+Muk,1,Poison Barb,Sludge Bomb,Body Slam,Screech,Minimize,no
+Muk,2,Mint Berry,Curse,Rest,Sludge Bomb,DynamicPunch,no
+Muk,3,MiracleBerry,Sludge Bomb,Thunderbolt,Flamethrower,Ice Punch,no
+Muk,4,Quick Claw,Sludge Bomb,Body Slam,Giga Drain,Explosion,no
+Murkrow,1,Scope Lens,Drill Peck,Faint Attack,Mud-Slap,Night Shade,no
+Murkrow,2,Leftovers,Drill Peck,Faint Attack,Double Team,Toxic,no
+Murkrow,3,Mint Berry,Drill Peck,Shadow Ball,Curse,Rest,no
+Murkrow,4,MiracleBerry,Drill Peck,Shadow Ball,Steel Wing,Thief,no
+Nidoking,1,Quick Claw,Horn Drill,Double Kick,Body Slam,Counter,no
+Nidoking,2,Leftovers,Mega Kick,Earthquake,Shadow Ball,Submission,no
+Nidoking,3,MysteryBerry,Horn Drill,Fire Blast,Blizzard,Surf,no
+Nidoking,4,MiracleBerry,Double-Edge,Rock Slide,Earthquake,Thunder,no
+Nidoqueen,1,Focus Band,Earthquake,Double Kick,Body Slam,Counter,no
+Nidoqueen,2,Leftovers,Double-Edge,Earthquake,BubbleBeam,Rock Slide,no
+Nidoqueen,3,MiracleBerry,Thunderbolt,Flamethrower,Ice Beam,Bite,no
+Nidoqueen,4,BrightPowder,Double-Edge,Rock Slide,Earthquake,Shadow Ball,no
+Ninetales,1,Ice Berry,Flamethrower,Roar,Confuse Ray,Toxic,no
+Ninetales,2,MiracleBerry,Fire Blast,Body Slam,Spite,Sunny Day,no
+Ninetales,3,BrightPowder,Fire Blast,Iron Tail,Confuse Ray,Attract,no
+Ninetales,4,Focus Band,Fire Blast,Double-Edge,Confuse Ray,Reflect,no
+Octillery,1,Quick Claw,BubbleBeam,Ice Beam,Psybeam,Hyper Beam,no
+Octillery,2,Quick Claw,Surf,Ice Beam,Rain Dance,Psybeam,no
+Octillery,3,Mint Berry,Surf,Ice Beam,Psybeam,Rest,no
+Octillery,4,Leftovers,Surf,Ice Beam,Double Team,Toxic,no
+Omastar,1,Quick Claw,Surf,Icy Wind,AncientPower,Protect,no
+Omastar,2,Quick Claw,Surf,Ice Beam,AncientPower,Bite,no
+Omastar,3,Quick Claw,Hydro Pump,Ice Beam,Rain Dance,Bite,no
+Omastar,4,Mint Berry,Surf,Ice Beam,Thief,Rest,no
+Piloswine,1,Quick Claw,Earthquake,Icy Wind,AncientPower,Roar,no
+Piloswine,2,Leftovers,Earthquake,Rock Slide,Ice Beam,Body Slam,no
+Piloswine,3,Scope Lens,Earthquake,Rock Slide,Ice Beam,Bite,no
+Piloswine,4,Mint Berry,Earthquake,Rock Slide,Curse,Rest,no
+Politoed,1,Mystic Water,Surf,Icy Wind,Headbutt,Hypnosis,no
+Politoed,2,MiracleBerry,Surf,Ice Beam,Psychic,Thief,no
+Politoed,3,Scope Lens,Hydro Pump,Ice Beam,Rain Dance,Earthquake,no
+Politoed,4,Mint Berry,Return,Earthquake,Belly Drum,Rest,no
+Poliwrath,1,MiracleBerry,Surf,Icy Wind,Headbutt,Counter,no
+Poliwrath,2,Focus Band,Surf,Ice Beam,Submission,Earthquake,no
+Poliwrath,3,Mint Berry,Return,Earthquake,Belly Drum,Rest,no
+Poliwrath,4,Scope Lens,Hydro Pump,Ice Beam,Rain Dance,Submission,no
+Porygon2,1,Leftovers,Tri Attack,Iron Tail,Psychic,Recover,no
+Porygon2,2,Quick Claw,Tri Attack,Ice Beam,Curse,Recover,no
+Porygon2,3,MiracleBerry,Psychic,Tri Attack,Thunder Wave,Recover,no
+Porygon2,4,BrightPowder,Psychic,Thunderbolt,Ice Beam,Recover,no
+Quagsire,1,Focus Band,Earthquake,Body Slam,Toxic,Mud-Slap,no
+Quagsire,2,Leftovers,Curse,Attract,Earthquake,AncientPower,no
+Quagsire,3,Quick Claw,Earthquake,Sludge Bomb,Body Slam,Curse,no
+Quagsire,4,Leftovers,Surf,Earthquake,Ice Beam,Amnesia,no
+Qwilfish,1,Poison Barb,Sludge Bomb,BubbleBeam,Icy Wind,Spikes,no
+Qwilfish,2,Mint Berry,Surf,Toxic,Double Team,Rest,no
+Qwilfish,3,Quick Claw,Surf,Ice Beam,Sludge Bomb,Return,no
+Qwilfish,4,Focus Band,Surf,Sludge Bomb,Flail,Endure,no
+Raichu,1,BrightPowder,Thunderbolt,Quick Attack,Light Screen,Double Team,no
+Raichu,2,MiracleBerry,Thunderbolt,Reversal,Endure,Agility,no
+Raichu,3,PRZCureBerry,Thunder,Rain Dance,Iron Tail,Surf,no
+Raichu,4,BrightPowder,Thunderbolt,Thunder Wave,Protect,Fly,no
+Raikou,1,Mint Berry,Thunderbolt,Crunch,Double Team,Rest,yes
+Raikou,2,BrightPowder,Thunder,Rain Dance,Double Team,Reflect,yes
+Raikou,3,MiracleBerry,Thunderbolt,Crunch,Return,Reflect,yes
+Raikou,4,Leftovers,Return,Dig,Curse,Thunderbolt,yes
+Rapidash,1,Charcoal,Flamethrower,Double Kick,Quick Attack,Protect,no
+Rapidash,2,Leftovers,Flamethrower,Body Slam,Double Kick,Horn Drill,no
+Rapidash,3,Mint Berry,Fire Blast,Double-Edge,Sleep Talk,Rest,no
+Rapidash,4,Scope Lens,Fire Blast,Double-Edge,Iron Tail,Double Kick,no
+Rhydon,1,Quick Claw,Earthquake,Rock Slide,Scary Face,Stomp,no
+Rhydon,2,Quick Claw,Earthquake,Horn Drill,Rock Slide,Submission,no
+Rhydon,3,Quick Claw,Earthquake,Flamethrower,Ice Beam,Thunderbolt,no
+Rhydon,4,Quick Claw,Earthquake,Double-Edge,Rock Slide,Horn Drill,no
+Scizor,1,Focus Band,Metal Claw,Wing Attack,Counter,Quick Attack,no
+Scizor,2,Quick Claw,Wing Attack,Steel Wing,Swords Dance,Light Screen,no
+Scizor,3,Focus Band,Reversal,Endure,Agility,Slash,no
+Scizor,4,BrightPowder,Metal Claw,Swords Dance,Agility,Baton Pass,no
+Shuckle,1,Mint Berry,Rollout,Defense Curl,Sleep Talk,Rest,no
+Shuckle,2,Leftovers,Sandstorm,Flash,Dig,Double Team,no
+Shuckle,3,Leftovers,Wrap,Attract,Toxic,Double Team,no
+Shuckle,4,Mint Berry,Toxic,Double Team,Wrap,Rest,no
+Skarmory,1,Scope Lens,Steel Wing,Drill Peck,Whirlwind,Agility,no
+Skarmory,2,MiracleBerry,Drill Peck,Steel Wing,Thief,Toxic,no
+Skarmory,3,Mint Berry,Toxic,Curse,Rest,Fly,no
+Skarmory,4,Quick Claw,Drill Peck,Steel Wing,Return,Curse,no
+Slowbro,1,Leftovers,Surf,Rain Dance,Headbutt,Ice Punch,no
+Slowbro,2,Mint Berry,Return,Earthquake,Belly Drum,Rest,no
+Slowbro,3,Quick Claw,Surf,Psychic,Shadow Ball,Attract,no
+Slowbro,4,Quick Claw,Psychic,Surf,Earthquake,Ice Beam,no
+Slowking,1,Leftovers,Psychic,Shadow Ball,Amnesia,Attract,no
+Slowking,2,Gold Berry,Toxic,Thunder Wave,Surf,Psychic,no
+Slowking,3,Quick Claw,Psychic,Surf,Ice Beam,Earthquake,no
+Slowking,4,Quick Claw,Psychic,Surf,Ice Beam,Flamethrower,no
+Snorlax,1,Leftovers,Body Slam,Shadow Ball,Attract,Double Team,no
+Snorlax,2,Mint Berry,Earthquake,Rock Slide,Curse,Rest,no
+Snorlax,3,Quick Claw,Mega Kick,Shadow Ball,Swagger,Psych Up,no
+Snorlax,4,Quick Claw,Double-Edge,Shadow Ball,Earthquake,Curse,no
+Starmie,1,Leftovers,Psychic,Confuse Ray,Thunder Wave,Recover,no
+Starmie,2,Leftovers,Hydro Pump,Thunder,Rain Dance,Recover,no
+Starmie,3,MiracleBerry,Surf,Psychic,Thunderbolt,Ice Beam,no
+Starmie,4,MiracleBerry,Psychic,Thunderbolt,Ice Beam,Recover,no
+Steelix,1,Gold Berry,Earthquake,Dragonbreath,Rock Slide,Roar,no
+Steelix,2,Leftovers,Earthquake,Dragonbreath,Sandstorm,Toxic,no
+Steelix,3,Quick Claw,Earthquake,Body Slam,Rock Slide,Explosion,no
+Steelix,4,Quick Claw,Earthquake,Iron Tail,Double-Edge,Explosion,no
+Suicune,1,Mint Berry,Surf,Ice Beam,Double Team,Rest,yes
+Suicune,2,Leftovers,Toxic,Surf,Double Team,Protect,yes
+Suicune,3,BrightPowder,Surf,Ice Beam,Bite,Mirror Coat,yes
+Suicune,4,MiracleBerry,Surf,Ice Beam,Rain Dance,Roar,yes
+Tauros,1,Bitter Berry,Earthquake,Thrash,Swagger,Headbutt,no
+Tauros,2,Mint Berry,Double-Edge,Earthquake,Double Team,Rest,no
+Tauros,3,Leftovers,Double-Edge,Earthquake,Flamethrower,Ice Beam,no
+Tauros,4,BrightPowder,Double-Edge,Earthquake,Thunderbolt,Surf,no
+Tentacruel,1,Bitter Berry,Sludge Bomb,Icy Wind,Barrier,Attract,no
+Tentacruel,2,Leftovers,Toxic,Giga Drain,Attract,Surf,no
+Tentacruel,3,Scope Lens,Surf,Giga Drain,Ice Beam,Mirror Coat,no
+Tentacruel,4,Scope Lens,Hydro Pump,Sludge Bomb,Ice Beam,Mirror Coat,no
+Typhlosion,1,Focus Band,Fire Blast,Sunny Day,Smokescreen,Roar,no
+Typhlosion,2,Scope Lens,Flamethrower,ThunderPunch,Iron Tail,Earthquake,no
+Typhlosion,3,Focus Band,Earthquake,Flamethrower,Endure,Reversal,no
+Typhlosion,4,Scope Lens,Fire Punch,ThunderPunch,DynamicPunch,Earthquake,no
+Tyranitar,1,BrightPowder,Earthquake,Rock Slide,Thunderbolt,Surf,no
+Tyranitar,2,Focus Band,Earthquake,Rock Slide,Crunch,Thunderbolt,no
+Tyranitar,3,Mint Berry,Earthquake,Rock Slide,Curse,Rest,no
+Tyranitar,4,Quick Claw,Crunch,Ice Beam,Thunderbolt,Flamethrower,no
+Umbreon,1,BrightPowder,Confuse Ray,Faint Attack,Double Team,Baton Pass,no
+Umbreon,2,Leftovers,Curse,Screech,Double Team,Double-Edge,no
+Umbreon,3,BrightPowder,Swagger,Attract,Psych Up,Shadow Ball,no
+Umbreon,4,Leftovers,Confuse Ray,Toxic,Faint Attack,Double Team,no
+Ursaring,1,Quick Claw,Slash,Crunch,Metal Claw,Counter,no
+Ursaring,2,Quick Claw,Return,Earthquake,Fire Punch,Counter,no
+Ursaring,3,MiracleBerry,Fire Punch,Ice Punch,ThunderPunch,Crunch,no
+Ursaring,4,Quick Claw,Return,Earthquake,Crunch,Curse,no
+Vaporeon,1,Mystic Water,Surf,Roar,Bite,Quick Attack,no
+Vaporeon,2,Leftovers,Surf,Ice Beam,Body Slam,Shadow Ball,no
+Vaporeon,3,Quick Claw,Surf,Ice Beam,Acid Armor,Baton Pass,no
+Vaporeon,4,MiracleBerry,Surf,Ice Beam,Acid Armor,Rest,no
+Venusaur,1,Mint Berry,Giga Drain,Sunny Day,Synthesis,Sleep Powder,no
+Venusaur,2,BrightPowder,Leech Seed,Giga Drain,Double Team,Light Screen,no
+Venusaur,3,Mint Berry,Leech Seed,Giga Drain,Toxic,Rest,no
+Venusaur,4,Scope Lens,Solarbeam,Sunny Day,Hyper Beam,Synthesis,no
+Victreebel,1,Gold Berry,Giga Drain,Sleep Powder,Sweet Scent,Synthesis,no
+Victreebel,2,Leftovers,Giga Drain,Sludge Bomb,Sleep Powder,Attract,no
+Victreebel,3,BrightPowder,Stun Spore,Leech Seed,Giga Drain,Sludge Bomb,no
+Victreebel,4,BrightPowder,Giga Drain,Double-Edge,Sludge Bomb,Synthesis,no
+Vileplume,1,Bitter Berry,Sludge Bomb,Petal Dance,Moonlight,Sweet Scent,no
+Vileplume,2,BrightPowder,Leech Seed,Double Team,Toxic,Giga Drain,no
+Vileplume,3,Leftovers,Attract,Stun Spore,Sludge Bomb,Giga Drain,no
+Vileplume,4,Quick Claw,Solarbeam,Sludge Bomb,Sunny Day,Synthesis,no
+Weezing,1,BrightPowder,Sludge Bomb,Thief,Flamethrower,Smokescreen,no
+Weezing,2,Gold Berry,Explosion,Sludge Bomb,Return,Destiny Bond,no
+Weezing,3,Focus Band,Explosion,Sludge Bomb,Flamethrower,Thunderbolt,no
+Weezing,4,Focus Band,Explosion,Sludge Bomb,Return,Flamethrower,no
+Xatu,1,Sharp Beak,Drill Peck,Night Shade,Psychic,Future Sight,no
+Xatu,2,Leftovers,Fly,Toxic,Confuse Ray,Attract,no
+Xatu,3,King's Rock,Drill Peck,Psychic,Giga Drain,Steel Wing,no
+Xatu,4,Scope Lens,Psychic,Drill Peck,Faint Attack,Confuse Ray,no
+Zapdos,1,MiracleBerry,Thunderbolt,Drill Peck,Thunder Wave,Roar,yes
+Zapdos,2,BrightPowder,Thunder,Rain Dance,Drill Peck,Double Team,yes
+Zapdos,3,Leftovers,Thunderbolt,Drill Peck,Thunder Wave,Substitute,yes
+Zapdos,4,Scope Lens,Thunderbolt,Drill Peck,Double-Edge,Thunder Wave,yes

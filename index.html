@@ -238,39 +238,44 @@
             </div>
         </div>
         
-        <div id="details" class="tab-content">
+<div id="details" class="tab-content">
             <div class="description">
-                <p>
-                    Here's some more detailed information about the Crystal Factory mechanics:
-                </p>
-                <p>
-                    All Pokémon have four different sets. Rounds 1-4, each Pokémon will only be using the corresponding set (Round 1 is only Set 1 Pokémon, Round 2 is 
-                    only Set 2, etc.). Starting at Round 5, all sets are possible for both you and your opponents, and legendaries + Dragonite also become available.
-                    Unlike Gen 3/4, there is no boss, so every round past Round 5 is basically the same.
-                </p>
-                <p>
-                    DVs of table Pokémon increase by 3 each round, starting at 3 for Round 1 and maxing out at 15 on Round 5. Opponents always have 3 DVs. Unlike Gen 3/4,
-                    there are no elevations based on swap count. Note that in Gen 2, the HP DV is based on the other DVs, so it actually alternates between 0 and 15 depending on
-                    if the other DVs are even or odd (if all other DVs are odd, HP is 15, if all other DVs are even, as in Rounds 2 and 4, the HP DV is 0). Also, gender is 
-                    determined by the species gender ratio combined with the Attack DV, meaning that your Pokémon are more likely to be male as the DVs increase, whereas opponents are
-                    more likely to have female Pokémon.
-                </p>
-                    <p>
-                        Enemy AI is set up in a similar way to Emerald, although Crystal has a few more types of AI. For Rounds 1 and 2, the enemy uses the same AI
-                        as wild Pokémon, which is random moves (unless the move is disabled/0 PP). Rounds 3 and 4 use the same AI as the "Youngster" trainer class,
-                        which is random except that it will not use moves that do nothing, like Ground moves against Flying types, or status moves if we're already
-                        statused. Round 5+ uses Gym Leader AI, which is what the vanilla Battle Tower trainers use (specifically Falkner's AI, not that it matters).
-                    </p>
-                <p>
-                    Gen 2 uses something called "Stat Exp", which is different than EVs in a couple ways. First, it's possible to max out the Stat Exp for every stat,
-                    resulting in Pokémon being much bulkier compared to Gen 3+. Second, for compatibility with Gen 1, the 
-                    Stat Exp for Special Attack and Special Defense is shared. For now, all sets have no Stat Exp at all, but this is subject to change if people don't like it.
-                </p>
-                <p>
-                    I plan on releasing more information and tools later, such as the spreadsheet for all of the sets, a damage calc with the stats pre-loaded, and a Battle
-                    Factory Buddy tool, similar to the existing Battle Factory tools. For now I'm just trying to see if people like the Gen 2 Factory, if there are any bugs,
-                    if there are changes I should make, and so on.
-                </p>
+                <h3>Pokémon Sets & Round Progression</h3>
+                <ul>
+                    <li><strong>General:</strong> All Pokémon have four different sets.</li>
+                    <li><strong>Rounds 1-4:</strong> By default, Pokémon only use the corresponding set (Round 1 is only Set 1 Pokémon, Round 2 is only Set 2, etc.).</li>
+                    <li><strong>Round 5+:</strong> All sets are possible for both you and your opponents, and legendaries + Dragonite also become available.</li>
+                    <li><strong>Sets Unlocked Option:</strong> The "Set" option in the settings menu can be set to "Unlocked", which will immediately make all sets possible for both you and your opponents. The "Scaling" setting is the default and works as described above.</li>
+                    <li><strong>No Boss:</strong> Unlike Gen 3/4, there is no boss (yet), so every round past Round 5 is basically the same.</li>
+                </ul>
+
+                <h3>DVs</h3>
+                <ul>
+                    <li><strong>Settings:</strong> There are three settings for DVs, which can be applied independently to either our Pokémon or the opponent's. Min sets all DVs to 3, Max sets all DVs to 15, Scaling starts at all 3 on Round 1 and increases by 3 per round until maxing out at 15 on Round 5.</li>
+                    <li><strong>Swaps:</strong> Unlike Gen 3/4, there are no elevations based on swap count.</li>
+                    <li><strong>HP DV:</strong> In Gen 2, the HP DV is based on the other DVs, so it actually alternates between 0 and 15. If all other DVs are odd, HP is 15. If all other DVs are even (as in Rounds 2 and 4 with the Scaling setting) the HP DV is 0.</li>
+                    <li><strong>Gender Mechanics:</strong> Gender is determined by the species gender ratio combined with the Attack DV, meaning that Pokémon are more likely to be male with higher DVs.</li>
+                </ul>
+
+                <h3>Enemy AI</h3>
+                <p>Enemy AI is set up in a similar way to Emerald, although Crystal has a few more types of AI.</p>
+                <ul>
+                    <li><strong>Rounds 1 and 2:</strong> Enemy uses wild Pokémon AI, which is random moves (unless the move is disabled/0 PP).</li>
+                    <li><strong>Rounds 3 and 4:</strong> Enemy uses the "Youngster" trainer class AI, which is random except that it will not use moves that do nothing (like Ground moves against Flying types).</li>
+                    <li><strong>Round 5+:</strong> Enemy uses Gym Leader AI, which is what the vanilla Battle Tower trainers use (specifically Falkner's AI, not that it matters). This is Gen 2's "Smart AI".</li>
+                    <li><strong>Settings:</strong> The above text describes the default "Scaling" setting for Enemy AI, but it can also be set to "Smart" which will result in every round having Gym Leader AI.</li>
+                </ul>
+
+                <h3>Stat Exp</h3>
+                <p>Gen 2 uses something called "Stat Exp", which is different than EVs in a couple ways.</p>
+                <ul>
+                    <li><strong>Max Stats:</strong> It's possible to max out the Stat Exp for every stat, resulting in Pokémon being much bulkier compared to Gen 3+.</li>
+                    <li><strong>Shared Special Stats:</strong> Second, for compatibility with Gen 1, the Stat Exp for Special Attack and Special Defense is shared.</li>
+                    <li><strong>Settings:</strong> There are two options for Stat Exp: Max or None. None is self explanatory, Max results in +63 to all stats at Level 100.</li>
+                </ul>
+
+                <h3>Future Plans</h3>
+                <p>I plan on releasing more information and tools later, such as the spreadsheet for all of the sets, a damage calc with the stats pre-loaded, and a Battle Factory Buddy tool, similar to the existing Battle Factory tools. For now I'm just trying to see if people like the Gen 2 Factory, if there are any bugs, if there are changes I should make, and so on.</p>
             </div>
         </div>
         

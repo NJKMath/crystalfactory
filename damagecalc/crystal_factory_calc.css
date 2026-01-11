@@ -1,0 +1,696 @@
+/* Crystal Factory Damage Calculator - Consolidated CSS */
+
+/* ==========================================================================
+   Dark Mode Variables
+   ========================================================================== */
+
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --container-bg: white;
+    --container-shadow: rgba(0,0,0,0.1);
+    --title-color: #2c5aa0;
+    --border-color: #AAAAAA;
+    --input-bg: white;
+    --input-border: #ddd;
+    --button-bg: #e9e9e9;
+    --button-hover: #e3e3e3;
+    --button-active: #f5f5f5;
+    --dropdown-bg: white;
+    --dropdown-border: #ddd;
+    --option-hover: #f5f5f5;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --container-bg: #2d3748;
+    --container-shadow: rgba(0,0,0,0.5);
+    --title-color: #667eea;
+    --border-color: #4a5568;
+    --input-bg: #2d3748;
+    --input-border: #4a5568;
+    --button-bg: #374151;
+    --button-hover: #4b5563;
+    --button-active: #4a5568;
+    --dropdown-bg: #2d3748;
+    --dropdown-border: #4a5568;
+    --option-hover: #4a5568;
+}
+
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
+
+html {
+    min-height: 100%;
+    background-color: var(--bg-color);
+}
+
+body {
+    font: 10pt Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-width: 100em;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+a:hover, a:focus {
+    color: var(--title-color);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+figure {
+    margin: 0;
+}
+
+th, td {
+    padding: 0;
+}
+
+th {
+    font-size: 0.8em;
+}
+
+input, select, textarea {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+p {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* ==========================================================================
+   Dark Mode Toggle
+   ========================================================================== */
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background: var(--dropdown-bg);
+    border: 2px solid var(--dropdown-border);
+    border-radius: 25px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.theme-slider {
+    position: relative;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.theme-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    z-index: 2;
+    transition: opacity 0.3s;
+}
+
+.theme-slider-bg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 36px;
+    height: 36px;
+    background: #888;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+[data-theme="dark"] .theme-slider-bg {
+    transform: translateX(50px);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.wrapper {
+    padding: 0 1em;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+div.wrapper > div > span {
+    padding-right: 5px;
+}
+
+.panel {
+    float: left;
+    display: inline-block;
+    margin: 5px;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+fieldset {
+    float: left;
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+legend {
+    font-weight: bold;
+    text-align: center;
+    color: var(--text-color);
+}
+
+[hidden], .hide {
+    display: none;
+}
+
+/* Hide Spikes buttons */
+#gscSpikesL, #gscSpikesR, 
+label[for="gscSpikesL"], label[for="gscSpikesR"] {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.title-text {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0.5em 1em 0.5em 0;
+    color: var(--title-color);
+}
+
+.big-text {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0.5em 0;
+}
+
+.small-text {
+    font-size: 0.8em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+    text-align: center;
+    border: solid 1px var(--border-color);
+    padding: 4px 8px;
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+    background: var(--button-bg);
+    margin: -1px -3px 0;
+    display: inline-block;
+    width: 5em;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.btn-wide {
+    width: 7em;
+}
+
+.btn-xwide {
+    width: 8em;
+}
+
+.btn-xxwide {
+    width: 9em;
+}
+
+.btn-xxxwide {
+    width: 10em;
+}
+
+.btn-small {
+    width: 4em;
+}
+
+.btn-xsmall {
+    width: 2.5em;
+    font-size: 0.85em;
+    padding: 4px 2px;
+}
+
+.btn-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-bottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.btn-mid {
+    border-radius: 0;
+}
+
+.btn-input:checked + .btn {
+    font-weight: bold;
+    color: var(--text-color);
+    background: var(--button-active);
+}
+
+.btn-input[type="radio"]:checked + .btn {
+    cursor: default;
+}
+
+.btn-input {
+    display: none;
+}
+
+.btn-input:disabled + .btn {
+    color: #999999;
+}
+
+.visually-hidden:focus + .btn,
+.btn:hover {
+    z-index: 10;
+    border-color: var(--title-color);
+    background: var(--button-hover);
+}
+
+.visually-hidden:checked + .btn {
+    font-weight: bold;
+    color: var(--text-color);
+    background: var(--button-active);
+}
+
+.visually-hidden[type="radio"]:checked + .btn {
+    cursor: default;
+}
+
+/* Hide element visually, but not from screen readers */
+.visually-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    white-space: nowrap;
+}
+
+.visually-hidden:disabled + .btn {
+    color: #999999;
+}
+
+.btn-group {
+    display: inline-block;
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.locked-move:checked + .btn {
+    background: #ffff99;
+}
+
+button {
+    background: var(--button-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+/* Weather button colors */
+#gscSun:checked + .btn {
+    background: #f9ca24 !important;
+    color: #000 !important;
+}
+
+#gscRain:checked + .btn {
+    background: #3498db !important;
+    color: #fff !important;
+}
+
+#gscSand:checked + .btn {
+    background: #a67c52 !important;
+    color: #fff !important;
+}
+
+/* ==========================================================================
+   Move Results Section
+   ========================================================================== */
+
+.move-result-group {
+    max-width: 80em;
+    min-width: 50em;
+    margin: 1em 0 11.5em;
+}
+
+.move-result-subgroup {
+    float: left;
+    width: 50%;
+}
+
+.move-result-subgroup > div {
+    margin-left: 10em;
+}
+
+.move-result-subgroup .result-move-header {
+    margin-left: 12.5em !important;
+}
+
+.move-result-group .btn {
+    margin-right: 1em;
+}
+
+.main-result-group {
+    margin: 2em 0 1em;
+}
+
+.result-move-header {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+
+/* ==========================================================================
+   Pokemon Info Panel
+   ========================================================================== */
+
+.poke-info {
+    width: 33em;
+}
+
+.poke-info label {
+    display: inline-block;
+    width: 6em;
+}
+
+.poke-info input:not([type]):not(.set-selector), .poke-info input[type="text"]:not(.set-selector), .poke-info span:not(.set-name):not(.set-moves) {
+    display: inline-block;
+    width: 2.5em;
+}
+
+.poke-info .type-display {
+    display: inline-block;
+    width: auto;
+    min-width: 4em;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+.poke-info .level-display {
+    display: inline-block;
+    width: auto;
+    min-width: 2.5em;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+.poke-info input[type="number"] {
+    display: inline-block;
+    width: 3em;
+}
+
+.info-group {
+    margin: 1em 0;
+}
+
+.set-selector {
+    width: 150px;
+    max-width: 150px;
+    font-size: 14px;
+    padding: 6px;
+}
+
+.set-selector-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+.set-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    background: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    border-top: none;
+    z-index: 1000;
+    display: none;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 450px;
+}
+
+.set-dropdown.show {
+    display: block;
+}
+
+.set-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--dropdown-border);
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.set-option:hover {
+    background: var(--option-hover);
+}
+
+.set-option:last-child {
+    border-bottom: none;
+}
+
+.set-name {
+    font-weight: bold;
+    display: inline;
+}
+
+.set-moves {
+    font-size: 0.75em;
+    color: #888;
+    display: inline;
+}
+
+[data-theme="dark"] .set-moves {
+    color: #aaa;
+}
+
+.move-selector {
+    width: 8.5em;
+}
+
+.info-selectors select {
+    width: 8em;
+}
+
+select.toxic-counter {
+    width: 4.5em;
+}
+
+.move-selector, .move-bp, .move-type, .move-cat, .move-hits, .move-pp, .move-pp-total {
+    font-size: 0.9em;
+}
+
+.poke-info input.move-bp {
+    width: 2em;
+}
+
+.move-type {
+    width: 5.4em;
+}
+
+.move-cat {
+    width: 5.45em;
+}
+
+.move-hits {
+    width: 4.5em;
+}
+
+.poke-info .crit-btn {
+    font-size: 0.8em;
+    width: 2.5em;
+    height: 1em;
+    padding: 3px 3px;
+}
+
+.poke-info .ev-total, .poke-info .ev-left {
+    font-size: 0.8em;
+}
+
+.poke-info .underLimit {
+    color: #000000;
+}
+
+.poke-info .overLimit {
+    color: #CC0000;
+}
+
+/* ==========================================================================
+   Field Info Panel
+   ========================================================================== */
+
+.field-info, .poke-import {
+    width: 28em;
+}
+
+.field-info .btn {
+    font-size: 0.8em;
+}
+
+.leveloverride, .leveloverride span {
+    margin: 0 0 2px;
+    width: 1.8em;
+}
+
+/* ==========================================================================
+   HP Bar
+   ========================================================================== */
+
+.hpbar {
+    height: 4px;
+    border-style: solid;
+    border-top-width: 2px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-left-width: 0.5px;
+    border-radius: 3px;
+}
+
+.hpbar.hp-green {
+    border-top-color: #00dd60;
+    background-color: green;
+    border-bottom-color: #007734;
+    border-right-color: #007734;
+}
+
+.hpbar.hp-yellow {
+    border-top-color: #f8e379;
+    background-color: #f5d538;
+    border-bottom-color: #be9f0a;
+    border-right-color:#be9f0a;
+}
+
+.hpbar.hp-red {
+    border-top-color: #f37f67;
+    background-color: #ee4928;
+    border-bottom-color: #a3260d;
+    border-right-color: #a3260d;
+}
+
+/* ==========================================================================
+   Input Styling
+   ========================================================================== */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+textarea {
+    overflow: auto;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+body > div[style*="clear:both"] {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.clear {
+    clear: right;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.text-center {
+    text-align: center;
+}
