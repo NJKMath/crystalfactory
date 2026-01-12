@@ -204,7 +204,7 @@ function getTypeEffectiveness(attackType, defenderTypes, field) {
     defenderTypes.forEach(function(defType) {
         if (!defType) return;
         
-        const matchup = getTypeMatchup(attackType, defType, field);
+        const matchup = getTypeMatchup(attackType, defType);
         effectiveness *= matchup;
     });
     
@@ -212,10 +212,7 @@ function getTypeEffectiveness(attackType, defenderTypes, field) {
 }
 
 // Type chart for Gen 2
-function getTypeMatchup(attackType, defenseType, field) {
-    // Check for Foresight removing Ghost immunities
-    const foresight = field.foresightDefender || false;
-    
+function getTypeMatchup(attackType, defenseType) {
     // Type chart (returns multiplier)
     const chart = {
         'Normal': { 'Rock': 0.5, 'Steel': 0.5, 'Ghost': 0 },
@@ -243,12 +240,199 @@ function getTypeMatchup(attackType, defenseType, field) {
         effectiveness = chart[attackType][defenseType];
     }
     
-    // Foresight removes Ghost immunities to Normal and Fighting
-    if (foresight && defenseType === 'Ghost' && (attackType === 'Normal' || attackType === 'Fighting')) {
-        effectiveness = 1;
+    return effectiveness;
+}
+
+// Calculate end-of-turn damage/healing for a Pokemon and return detailed info
+function calculateEndOfTurnEffects(defenderData, attackerData, fieldData, turn) {
+    let totalDamage = 0;
+    const effects = [];
+    
+    // Defender's Leftovers healing (negative damage = healing)
+    if (defenderData.item === 'Leftovers') {
+        const healing = Math.floor(defenderData.stats.hp / 16);
+        totalDamage -= healing;
+        effects.push({ name: 'Leftovers', amount: -healing });
     }
     
-    return effectiveness;
+    // Poison damage (1/8 max HP)
+    if (defenderData.status === 'Poisoned') {
+        const damage = Math.floor(defenderData.stats.hp / 8);
+        totalDamage += damage;
+        effects.push({ name: 'Poison', amount: damage });
+    }
+    
+    // Burn damage (1/8 max HP)
+    if (defenderData.status === 'Burned') {
+        const damage = Math.floor(defenderData.stats.hp / 8);
+        totalDamage += damage;
+        effects.push({ name: 'Burn', amount: damage });
+    }
+    
+    // Toxic damage (N/16 max HP, where N is turn counter)
+    if (defenderData.status === 'Badly Poisoned') {
+        const damage = Math.floor(defenderData.stats.hp * turn / 16);
+        totalDamage += damage;
+        effects.push({ name: 'Toxic (' + turn + '/16)', amount: damage });
+    }
+    
+    // Leech Seed - defender is seeded (loses 1/8 HP)
+    if (defenderData.hasLeechSeed) {
+        const damage = Math.floor(defenderData.stats.hp / 8);
+        totalDamage += damage;
+        effects.push({ name: 'Leech Seed', amount: damage });
+    }
+    
+    // Leech Seed - attacker is seeded (defender heals 1/8 of attacker's max HP)
+    if (attackerData.hasLeechSeed) {
+        const healing = Math.floor(attackerData.stats.hp / 8);
+        totalDamage -= healing;
+        effects.push({ name: 'Leech Seed (healing)', amount: -healing });
+    }
+    
+    return {
+        totalDamage: totalDamage,
+        effects: effects
+    };
+}
+
+// Calculate multi-turn KO probabilities
+function calculateMultiTurnKO(attackerData, defenderData, move, fieldData) {
+    // Get the basic damage calculation
+    const damageResult = calculateGen2Damage(attackerData, defenderData, move, fieldData);
+    
+    if (damageResult.max === 0) {
+        return { turns: null, probability: 0, details: [], koText: 'does no damage' };
+    }
+    
+    // Get defender's current HP
+    const initialHP = defenderData.currentHP || defenderData.stats.hp;
+    
+    // Convert damage rolls to probability distribution
+    const damageDist = {};
+    damageResult.rolls.forEach(dmg => {
+        damageDist[dmg] = (damageDist[dmg] || 0) + 1;
+    });
+    
+    // Normalize to probabilities (0-1 range)
+    const totalRolls = damageResult.rolls.length;
+    for (let dmg in damageDist) {
+        damageDist[dmg] /= totalRolls;
+    }
+    
+    // Initialize HP states (probability distribution over HP values)
+    let hpStates = { [initialHP]: 1.0 };
+    
+    const turnDetails = [];
+    const maxTurns = 4;
+    
+    // Track cumulative damage for display purposes
+    let cumulativeMinDamage = 0;
+    let cumulativeMaxDamage = 0;
+    
+    for (let turn = 1; turn <= maxTurns; turn++) {
+        const newHpStates = {};
+        let koProb = 0;
+        
+        // Update cumulative damage from attacks
+        cumulativeMinDamage += damageResult.min;
+        cumulativeMaxDamage += damageResult.max;
+        
+        // Calculate end-of-turn effects for this turn
+        const eotEffects = calculateEndOfTurnEffects(defenderData, attackerData, fieldData, turn);
+        const eotDamage = eotEffects.totalDamage;
+        
+        // Apply damage rolls to all current HP states
+        for (let hp in hpStates) {
+            const hpValue = parseInt(hp);
+            const hpProb = hpStates[hp];
+            
+            for (let dmg in damageDist) {
+                const dmgValue = parseInt(dmg);
+                const dmgProb = damageDist[dmg];
+                
+                let newHP = hpValue - dmgValue;
+                
+                // Check for KO from attack damage
+                if (newHP <= 0) {
+                    koProb += hpProb * dmgProb;
+                } else {
+                    // Apply end-of-turn effects
+                    // Only apply damaging effects if they would contribute to KO
+                    // Ignore healing effects on KO turn since KO happens first
+                    if (eotDamage > 0) {
+                        // Damaging effect - apply it
+                        newHP -= eotDamage;
+                        
+                        // Check for KO from end-of-turn effects
+                        if (newHP <= 0) {
+                            koProb += hpProb * dmgProb;
+                        } else {
+                            // Add to new HP states
+                            newHpStates[newHP] = (newHpStates[newHP] || 0) + hpProb * dmgProb;
+                        }
+                    } else if (eotDamage < 0) {
+                        // Healing effect - apply it (KO not possible this turn from attack)
+                        newHP -= eotDamage; // Subtract negative = add healing
+                        newHpStates[newHP] = (newHpStates[newHP] || 0) + hpProb * dmgProb;
+                    } else {
+                        // No end-of-turn effects
+                        newHpStates[newHP] = (newHpStates[newHP] || 0) + hpProb * dmgProb;
+                    }
+                }
+            }
+        }
+        
+        // Record turn details
+        turnDetails.push({
+            turn: turn,
+            minDamage: damageResult.min,
+            maxDamage: damageResult.max,
+            cumulativeMin: cumulativeMinDamage,
+            cumulativeMax: cumulativeMaxDamage,
+            eotEffects: eotEffects,
+            koProb: koProb
+        });
+        
+        // If we have a guaranteed KO this turn, return it
+        if (koProb >= 0.999) {
+            const koType = turn === 1 ? 'OHKO' : turn === 2 ? '2HKO' : turn === 3 ? '3HKO' : '4HKO';
+            return {
+                turns: turn,
+                probability: 100,
+                details: turnDetails,
+                koText: 'guaranteed ' + koType
+            };
+        }
+        
+        // If we have a partial KO this turn, return it
+        if (koProb > 0) {
+            const koType = turn === 1 ? 'OHKO' : turn === 2 ? '2HKO' : turn === 3 ? '3HKO' : '4HKO';
+            const koPercent = Math.round(koProb * 1000) / 10;
+            return {
+                turns: turn,
+                probability: koPercent,
+                details: turnDetails,
+                koText: koPercent + '% chance to ' + koType
+            };
+        }
+        
+        // Continue with remaining HP states
+        hpStates = newHpStates;
+        
+        // If no remaining states, we've KO'd
+        if (Object.keys(hpStates).length === 0) {
+            break;
+        }
+    }
+    
+    // If we haven't KO'd by turn 4, it's a 5+HKO
+    return {
+        turns: 5,
+        probability: 0,
+        details: turnDetails,
+        koText: '5HKO or more'
+    };
 }
 
 // Calculate and display damage for all moves
@@ -267,7 +451,7 @@ function updateDamageDisplay() {
     for (let i = 1; i <= 4; i++) {
         const move = getMoveData('L', i);
         if (move && move.power > 0) {
-            const result = calculateGen2Damage(p1Data, p2Data, move, { ...field, reflectDefender: field.reflectR, lightScreenDefender: field.lightScreenR, foresightDefender: field.foresightR });
+            const result = calculateGen2Damage(p1Data, p2Data, move, { ...field, reflectDefender: field.reflectR, lightScreenDefender: field.lightScreenR });
             displayDamageResult('L', i, result);
         } else {
             displayDamageResult('L', i, null);
@@ -278,7 +462,7 @@ function updateDamageDisplay() {
     for (let i = 1; i <= 4; i++) {
         const move = getMoveData('R', i);
         if (move && move.power > 0) {
-            const result = calculateGen2Damage(p2Data, p1Data, move, { ...field, reflectDefender: field.reflectL, lightScreenDefender: field.lightScreenL, foresightDefender: field.foresightL });
+            const result = calculateGen2Damage(p2Data, p1Data, move, { ...field, reflectDefender: field.reflectL, lightScreenDefender: field.lightScreenL });
             displayDamageResult('R', i, result);
         } else {
             displayDamageResult('R', i, null);
@@ -322,6 +506,11 @@ function updateDetailedDamageDisplay() {
     if (!attackerData || !defenderData || !move) {
         document.getElementById('mainResult').textContent = 'Select Pokemon and moves to calculate damage';
         document.getElementById('damageValues').textContent = '';
+        // Remove existing details if present
+        const existingDetails = document.getElementById('koDetails');
+        if (existingDetails) {
+            existingDetails.remove();
+        }
         return;
     }
     
@@ -330,8 +519,7 @@ function updateDetailedDamageDisplay() {
     const fieldForCalc = {
         ...field,
         reflectDefender: isDefenderL ? field.reflectL : field.reflectR,
-        lightScreenDefender: isDefenderL ? field.lightScreenL : field.lightScreenR,
-        foresightDefender: isDefenderL ? field.foresightL : field.foresightR
+        lightScreenDefender: isDefenderL ? field.lightScreenL : field.lightScreenR
     };
     
     const result = calculateGen2Damage(attackerData, defenderData, move, fieldForCalc);
@@ -366,19 +554,8 @@ function updateDetailedDamageDisplay() {
     const attackerDVTier = document.querySelector('#p' + (attackerSide === 'L' ? '1' : '2') + ' .dvsoverride').value;
     const defenderDVTier = document.querySelector('#p' + (defenderSide === 'L' ? '1' : '2') + ' .dvsoverride').value;
     
-    // Get defender's current HP
-    const defenderCurrentHP = parseInt(document.querySelector('#p' + (defenderSide === 'L' ? '1' : '2') + ' .current-hp').value);
-    
-    // Calculate KO chance
-    let koText = '(Placeholder)';
-    if (result.max > 0) {
-        // Count how many rolls result in a KO
-        const koRolls = result.rolls.filter(dmg => dmg >= defenderCurrentHP).length;
-        if (koRolls > 0) {
-            const koPercent = Math.floor(koRolls * 1000 / result.rolls.length) / 10;
-            koText = koPercent + '% chance to OHKO';
-        }
-    }
+    // Calculate multi-turn KO
+    const koResult = calculateMultiTurnKO(attackerData, defenderData, move, fieldForCalc);
     
     // Build description
     let description = attackerName + ' ' + move.name + ' (' + statExpText + ', ' + attackerDVTier + ' DVs) vs. ' + 
@@ -387,11 +564,73 @@ function updateDetailedDamageDisplay() {
     if (result.max === 0) {
         description += '0-0 (0 - 0%) -- does no damage';
     } else {
-        description += result.min + '-' + result.max + ' (' + result.minPercent + '% - ' + result.maxPercent + '%) -- ' + koText;
+        description += result.min + '-' + result.max + ' (' + result.minPercent + '% - ' + result.maxPercent + '%) -- ' + koResult.koText;
+    }
+    
+    // Add "See details" button if there are multi-turn details
+    if (koResult.details && koResult.details.length > 0 && result.max > 0) {
+        description += ' <button id="toggleDetails" style="margin-left: 10px;">See details</button>';
     }
     
     // Display main result
-    document.getElementById('mainResult').textContent = description;
+    document.getElementById('mainResult').innerHTML = description;
+    
+    // Add event listener for toggle button
+    const toggleBtn = document.getElementById('toggleDetails');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            const detailsDiv = document.getElementById('koDetails');
+            if (detailsDiv) {
+                detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+                toggleBtn.textContent = detailsDiv.style.display === 'none' ? 'See details' : 'Hide details';
+            }
+        });
+    }
+    
+    // Remove existing details if present
+    const existingDetails = document.getElementById('koDetails');
+    if (existingDetails) {
+        existingDetails.remove();
+    }
+    
+    // Build turn details summary
+    if (koResult.details && koResult.details.length > 0 && result.max > 0) {
+        let detailsHTML = '<div id="koDetails" style="display: none; margin-top: 10px; padding: 10px; background: var(--container-bg); border: 1px solid var(--border-color); border-radius: 4px;">';
+        
+        // Add starting HP
+        detailsHTML += '<div style="margin-bottom: 10px; font-weight: bold;">' + defenderName + ' Starting HP: ' + defenderData.currentHP + '/' + defenderData.stats.hp + '</div>';
+        
+        koResult.details.forEach((turn, index) => {
+            detailsHTML += '<div style="margin: 5px 0;"><strong>Turn ' + turn.turn + ':</strong> ';
+            detailsHTML += turn.minDamage + '-' + turn.maxDamage + ' damage from ' + move.name;
+            
+            // Add end of turn effects description
+            if (turn.eotEffects && turn.eotEffects.effects.length > 0) {
+                const effectsDesc = turn.eotEffects.effects.map(function(effect) {
+                    if (effect.amount > 0) {
+                        return effect.amount + ' damage from ' + effect.name;
+                    } else {
+                        return Math.abs(effect.amount) + ' HP recovered from ' + effect.name;
+                    }
+                }).join(', ');
+                detailsHTML += ', ' + effectsDesc;
+            }
+            
+            // Add total damage at end of turn
+            const turnTotalMin = turn.cumulativeMin + (turn.eotEffects.totalDamage > 0 ? turn.eotEffects.totalDamage * (index + 1) : 0);
+            const turnTotalMax = turn.cumulativeMax + (turn.eotEffects.totalDamage > 0 ? turn.eotEffects.totalDamage * (index + 1) : 0);
+            detailsHTML += '. <strong>Total Damage: ' + turnTotalMin + '-' + turnTotalMax + '</strong>';
+            
+            detailsHTML += '</div>';
+        });
+        
+        detailsHTML += '<div style="margin-top: 10px; font-weight: bold;">Final Result: ' + koResult.koText + '</div>';
+        detailsHTML += '</div>';
+        
+        // Insert details after main result
+        const damageValuesDiv = document.getElementById('damageValues');
+        damageValuesDiv.insertAdjacentHTML('beforebegin', detailsHTML);
+    }
     
     // Display possible damage amounts (including duplicates)
     if (result.max === 0) {
@@ -445,12 +684,27 @@ function getPokemonData(side) {
     const itemSelect = document.getElementById('item' + side + '1');
     const item = itemSelect ? itemSelect.value : null;
     
+    // Get status
+    const statusSelect = document.getElementById('status' + side + '1');
+    const status = statusSelect ? statusSelect.value : 'Healthy';
+    
+    // Get current HP
+    const currentHpInput = panel.querySelector('.current-hp');
+    const currentHP = currentHpInput ? parseInt(currentHpInput.value) : stats.hp;
+    
+    // Get Leech Seed status
+    const leechSeedCheck = document.getElementById('leechSeed' + side);
+    const hasLeechSeed = leechSeedCheck ? leechSeedCheck.checked : false;
+    
     return {
         level: level,
         stats: stats,
         boosts: boosts,
         types: types,
-        item: item
+        item: item,
+        status: status,
+        currentHP: currentHP,
+        hasLeechSeed: hasLeechSeed
     };
 }
 
@@ -494,8 +748,8 @@ function getFieldData() {
     const reflectR = document.getElementById('reflectR') ? document.getElementById('reflectR').checked : false;
     const lightScreenL = document.getElementById('lightScreenL') ? document.getElementById('lightScreenL').checked : false;
     const lightScreenR = document.getElementById('lightScreenR') ? document.getElementById('lightScreenR').checked : false;
-    const foresightL = document.getElementById('foresightL') ? document.getElementById('foresightL').checked : false;
-    const foresightR = document.getElementById('foresightR') ? document.getElementById('foresightR').checked : false;
+    const leechSeedL = document.getElementById('leechSeedL') ? document.getElementById('leechSeedL').checked : false;
+    const leechSeedR = document.getElementById('leechSeedR') ? document.getElementById('leechSeedR').checked : false;
     
     return {
         weather: weather,
@@ -503,7 +757,7 @@ function getFieldData() {
         reflectR: reflectR,
         lightScreenL: lightScreenL,
         lightScreenR: lightScreenR,
-        foresightL: foresightL,
-        foresightR: foresightR
+        leechSeedL: leechSeedL,
+        leechSeedR: leechSeedR
     };
 }

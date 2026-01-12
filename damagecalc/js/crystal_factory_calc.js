@@ -358,6 +358,40 @@ function calculateStats(side) {
         const maxHp = parseInt(hpTotal.textContent);
         maxHpSpan.textContent = maxHp;
         currentHpInput.value = maxHp;
+        
+        // Update percentage to 100%
+        const percentHpInput = document.querySelector(panelId + ' .percent-hp');
+        if (percentHpInput) {
+            percentHpInput.value = 100;
+        }
+    }
+}
+
+// Update percentage when current HP changes
+function updateHPPercentage(currentHpInput) {
+    const panel = currentHpInput.closest('.poke-info');
+    const maxHpSpan = panel.querySelector('.max-hp');
+    const percentHpInput = panel.querySelector('.percent-hp');
+    
+    if (maxHpSpan && percentHpInput) {
+        const currentHp = parseInt(currentHpInput.value) || 0;
+        const maxHp = parseInt(maxHpSpan.textContent) || 1;
+        const percentage = Math.floor(currentHp * 1000 / maxHp) / 10;
+        percentHpInput.value = percentage;
+    }
+}
+
+// Update current HP when percentage changes
+function updateCurrentHP(percentHpInput) {
+    const panel = percentHpInput.closest('.poke-info');
+    const maxHpSpan = panel.querySelector('.max-hp');
+    const currentHpInput = panel.querySelector('.current-hp');
+    
+    if (maxHpSpan && currentHpInput) {
+        const percentage = parseFloat(percentHpInput.value) || 0;
+        const maxHp = parseInt(maxHpSpan.textContent) || 0;
+        const currentHp = Math.floor(maxHp * percentage / 100);
+        currentHpInput.value = currentHp;
     }
 }
 
@@ -453,13 +487,29 @@ function initializeDefaultValues() {
         elem.addEventListener('change', updateDamageDisplay);
     });
     
+    // Status changes
+    document.querySelectorAll('.status').forEach(function(elem) {
+        elem.addEventListener('change', updateDamageDisplay);
+    });
+    
     // Current HP changes (affects KO calculations)
     document.querySelectorAll('.current-hp').forEach(function(elem) {
-        elem.addEventListener('input', updateDetailedDamageDisplay);
+        elem.addEventListener('input', function() {
+            updateHPPercentage(this);
+            updateDetailedDamageDisplay();
+        });
+    });
+    
+    // Percentage HP changes (updates current HP)
+    document.querySelectorAll('.percent-hp').forEach(function(elem) {
+        elem.addEventListener('input', function() {
+            updateCurrentHP(this);
+            updateDetailedDamageDisplay();
+        });
     });
     
     // Field conditions
-    document.querySelectorAll('input[name="gscWeather"], #reflectL, #reflectR, #lightScreenL, #lightScreenR, #foresightL, #foresightR').forEach(function(elem) {
+    document.querySelectorAll('input[name="gscWeather"], #reflectL, #reflectR, #lightScreenL, #lightScreenR, #leechSeedL, #leechSeedR').forEach(function(elem) {
         elem.addEventListener('change', updateDamageDisplay);
     });
     

@@ -22,11 +22,6 @@
 
     <div aria-label="Settings" role="region">
         <span class="title-text">Crystal Factory Damage Calculator</span>
-        <span aria-labelledby="selectNotationInstruction" role="radiogroup" title="Select the output notation.">
-             <span class="visually-hidden" id="selectNotationInstruction">Select the output notation.</span>
-             <input class="notation visually-hidden" type="radio" name="notation" id="pixels" value="px" /><label class="btn btn-small btn-left" for="pixels">48th</label>
-             <input class="notation visually-hidden" type="radio" name="notation" id="percentage" value="%" /><label class="btn btn-small btn-right" for="percentage">100%</label>
-         </span>
     </div>
     <hr />
     <div aria-label="Move selection" class="move-result-group" role="region" title="Select a move to show detailed results.">
@@ -353,9 +348,6 @@
                 <label for="currentHpL1">Current HP</label>
                 <input class="current-hp calc-trigger" id="currentHpL1" value="310" />/<span class="max-hp">310</span> (
                 <input class="percent-hp calc-trigger" value="100" />%)
-                <br />
-                <br />
-                Health <div class="hpbar"></div>
             </div>
             <div hidden id="criticalHitInstruction">Force this attack to be a critical hit?</div>
             <div class="move1">
@@ -454,21 +446,19 @@
                     </div>
                 </div>
                 <div class="btn-group">
-                    <div class="left" title="Is this Pokemon protected by Reflect and/or Light Screen?">
-                        <input class="btn-input calc-trigger" type="checkbox" id="reflectL" /><label class="btn btn-left" for="reflectL">Reflect</label>
-                        <input class="btn-input calc-trigger" type="checkbox" id="lightScreenL" /><label class="btn btn-xwide btn-right" for="lightScreenL">Light Screen</label>
+                    <div class="left" title="Is this Pokemon protected by Reflect?">
+                        <input class="btn-input calc-trigger" type="checkbox" id="reflectL" /><label class="btn" for="reflectL">Reflect</label>
                     </div>
-                    <div class="right" title="Is this Pokemon protected by Reflect and/or Light Screen?">
-                        <input class="btn-input calc-trigger" type="checkbox" id="reflectR" /><label class="btn btn-left" for="reflectR">Reflect</label>
-                        <input class="btn-input calc-trigger" type="checkbox" id="lightScreenR" /><label class="btn btn-xwide btn-right" for="lightScreenR">Light Screen</label>
+                    <div class="right" title="Is this Pokemon protected by Reflect?">
+                        <input class="btn-input calc-trigger" type="checkbox" id="reflectR" /><label class="btn" for="reflectR">Reflect</label>
                     </div>
                 </div>
                 <div class="btn-group">
-                    <div class="left" title="Has this Pokemon been revealed with Foresight?">
-                        <input class="btn-input calc-trigger" type="checkbox" id="foresightL" /><label class="btn btn-wide" for="foresightL">Foresight</label>
+                    <div class="left" title="Is this Pokemon protected by Light Screen?">
+                        <input class="btn-input calc-trigger" type="checkbox" id="lightScreenL" /><label class="btn btn-xwide" for="lightScreenL">Light Screen</label>
                     </div>
-                    <div class="right" title="Has this Pokemon been revealed with Foresight?">
-                        <input class="btn-input calc-trigger" type="checkbox" id="foresightR" /><label class="btn btn-wide" for="foresightR">Foresight</label>
+                    <div class="right" title="Is this Pokemon protected by Light Screen?">
+                        <input class="btn-input calc-trigger" type="checkbox" id="lightScreenR" /><label class="btn btn-xwide" for="lightScreenR">Light Screen</label>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -750,9 +740,6 @@
                 <label for="currentHpR1">Current HP</label>
                 <input class="current-hp calc-trigger" id="currentHpR1" value="310" />/<span class="max-hp">310</span> (
                 <input class="percent-hp calc-trigger" value="100" />%)
-                <br />
-                <br />
-                Health <div class="hpbar"></div>
             </div>
             <div class="move1">
                 <select class="move-selector calc-trigger"></select>
@@ -797,7 +784,10 @@
     <script type="text/javascript" src="./js/crystal_factory_calc.js"></script>
 </div>
 
-    <div style="clear:both;padding:20px;text-align:center"><p>Crystal Factory Damage Calculator</p></div>
+    <div style="clear:both;padding:20px;text-align:center">
+        <p>Crystal Factory Damage Calculator</p>
+        <p style="font-size: 0.9em;">Inspired by the <a href="https://turskain.github.io/index.html" target="_blank" style="color: var(--title-color);">Battle Tree Damage Calculator</a></p>
+    </div>
 
 </body>
 
