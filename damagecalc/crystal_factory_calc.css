@@ -416,12 +416,49 @@ button:hover {
     width: 50%;
 }
 
+.sprite-and-moves-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    margin-left: 10em;
+}
+
+.pokemon-sprite-container {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    overflow: visible;
+    transform: translateX(-120px);
+}
+
+.pokemon-sprite {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transform: scale(1.5);
+}
+
+.moves-container {
+    flex: 1;
+    transform: translateX(-120px);
+}
+
 .move-result-subgroup > div {
     margin-left: 10em;
 }
 
+.move-result-subgroup .sprite-and-moves-container {
+    margin-left: 10em;
+}
+
 .move-result-subgroup .result-move-header {
-    margin-left: 12.5em !important;
+    margin-left: 0 !important;
 }
 
 .move-result-group .btn {

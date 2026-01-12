@@ -1,36 +1,84 @@
-import requests
+import pandas as pd
 import os
+import shutil
 from pathlib import Path
 
-# Create the folder if it doesn't exist
-folder_name = "PokemonSprites"
-Path(folder_name).mkdir(exist_ok=True)
+# Create TempSprites folder if it doesn't exist
+temp_folder = "TempSprites"
+sprites_folder = "PokemonSprites"
+Path(temp_folder).mkdir(exist_ok=True)
 
-# Base URL pattern
-base_url = "https://www.serebii.net/pokearth/sprites/crystal/{}.png"
+print("Loading CSV files...")
+# Read the CSV files
+index_df = pd.read_csv("index_to_dex.csv")
+factory_df = pd.read_csv("CrystalFactorySets.csv")
 
-# Download sprites from 001 to 251
-print("Starting download...")
-for num in range(1, 252):
-    # Format number with leading zeros (001, 002, etc.)
-    num_str = f"{num:03d}"
-    
-    # Construct the URL
-    url = base_url.format(num_str)
-    
-    # Download the image
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()  # Raise an error for bad status codes
-        
-        # Save the image
-        file_path = os.path.join(folder_name, f"{num_str}.png")
-        with open(file_path, 'wb') as f:
-            f.write(response.content)
-        
-        print(f"Downloaded: {num_str}.png")
-        
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to download {num_str}.png: {e}")
+# Create a mapping of pokemon name to dex number
+name_to_dex = dict(zip(index_df["Pokemon"], index_df["Dex Number"]))
 
-print(f"\nDownload complete! Sprites saved in '{folder_name}' folder.")
+# Get unique pokemon names from factory sets (remove duplicates)
+factory_pokemon = factory_df["Pokemon"].unique()
+
+print(f"Found {len(factory_pokemon)} unique Pokemon in Factory sets")
+print("Starting renaming process...\n")
+
+# Track which sprites we've renamed
+renamed_sprites = set()
+failed_matches = []
+
+# Process each pokemon in the factory sets
+for pokemon_name in factory_pokemon:
+    # Look up the dex number
+    if pokemon_name in name_to_dex:
+        dex_num = name_to_dex[pokemon_name]
+        
+        # Format dex number with leading zeros (001, 002, etc.)
+        dex_str = f"{dex_num:03d}"
+        
+        # Check if sprite file exists
+        old_path = os.path.join(sprites_folder, f"{dex_str}.png")
+        new_path = os.path.join(sprites_folder, f"{pokemon_name}.png")
+        
+        if os.path.exists(old_path):
+            # Rename the sprite
+            os.rename(old_path, new_path)
+            renamed_sprites.add(f"{dex_str}.png")
+            print(f"Renamed: {dex_str}.png -> {pokemon_name}.png")
+        else:
+            print(f"WARNING: Sprite file {dex_str}.png not found for {pokemon_name}")
+            failed_matches.append(f"{pokemon_name} (sprite {dex_str}.png missing)")
+    else:
+        print(f"ERROR: Could not find dex number for '{pokemon_name}'")
+        failed_matches.append(f"{pokemon_name} (not in index_to_dex.csv)")
+
+print(f"\n{len(renamed_sprites)} sprites renamed successfully")
+
+# Move all remaining numbered sprites to TempSprites
+print("\nMoving unused sprites to TempSprites...")
+moved_count = 0
+
+for filename in os.listdir(sprites_folder):
+    if filename.endswith(".png") and filename not in renamed_sprites:
+        old_path = os.path.join(sprites_folder, filename)
+        new_path = os.path.join(temp_folder, filename)
+        shutil.move(old_path, new_path)
+        moved_count += 1
+
+print(f"Moved {moved_count} unused sprites to TempSprites")
+
+# Print summary
+print("\n" + "="*50)
+print("SUMMARY")
+print("="*50)
+print(f"Total Factory Pokemon: {len(factory_pokemon)}")
+print(f"Successfully renamed: {len(renamed_sprites)}")
+print(f"Moved to TempSprites: {moved_count}")
+
+if failed_matches:
+    print(f"\nFailed matches ({len(failed_matches)}):")
+    for failure in failed_matches:
+        print(f"  - {failure}")
+else:
+    print("\nAll Factory Pokemon matched successfully!")
+
+print("\nProcess complete!")

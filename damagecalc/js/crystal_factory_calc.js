@@ -208,6 +208,17 @@ function loadSet(setName, side) {
         return;
     }
     
+    // Update Pokemon sprite
+    const spriteImg = document.getElementById('sprite' + side);
+    if (spriteImg) {
+        spriteImg.src = './PokemonSprites/' + pokemonName + '.png';
+        spriteImg.style.display = 'block';
+        spriteImg.onerror = function() {
+            console.warn('Sprite not found for:', pokemonName);
+            spriteImg.style.display = 'none';
+        };
+    }
+    
     // Update the move result header with Pokemon name
     const resultHeader = document.getElementById('resultHeader' + side);
     if (resultHeader) {
