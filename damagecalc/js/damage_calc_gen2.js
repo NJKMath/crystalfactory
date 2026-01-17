@@ -17,7 +17,15 @@ function calculateGen2Damage(attacker, defender, move, field) {
     }
 
     const level = attacker.level;
-    const power = move.power;
+    let power = move.power;
+    let isCrit = move.isCrit || false;
+    
+    // Flail and Reversal - variable BP based on HP, never crit, max roll only
+    if (move.name === 'Flail' || move.name === 'Reversal') {
+        isCrit = false;
+        const hpRatio = Math.floor(48 * attacker.currentHP / attacker.stats.hp);
+        power = hpRatio <= 1 ? 200 : hpRatio <= 4 ? 150 : hpRatio <= 9 ? 100 : hpRatio <= 16 ? 80 : hpRatio <= 32 ? 40 : 20;
+    }
     
     // Determine if move is physical or special
     // In Gen 2, move category is determined by type
@@ -52,7 +60,6 @@ function calculateGen2Damage(attacker, defender, move, field) {
     let effectiveDefense = getStatWithBoost(defenseStat, defenseStage);
     
     // For critical hits: ignore stat modifiers if defender's boost >= attacker's boost
-    const isCrit = move.isCrit || false;
     if (isCrit) {
         if (defenseStage >= attackStage) {
             effectiveAttack = attackStat;
@@ -161,13 +168,15 @@ function calculateGen2Damage(attacker, defender, move, field) {
     
     // Calculate damage rolls (random multiplier from 217-255)
     const rolls = [];
-    for (let i = 217; i <= 255; i++) {
-        let damage = Math.floor(baseDamage * i / 255);
-        // Flail and Reversal always use max roll
-        if (move.name === 'Flail' || move.name === 'Reversal') {
-            damage = baseDamage;
+    
+    // Flail and Reversal always use max roll only
+    if (move.name === 'Flail' || move.name === 'Reversal') {
+        rolls.push(baseDamage);
+    } else {
+        for (let i = 217; i <= 255; i++) {
+            let damage = Math.floor(baseDamage * i / 255);
+            rolls.push(damage);
         }
-        rolls.push(damage);
     }
     
     // TODO: DoubleDmg modifier
@@ -504,8 +513,8 @@ function updateDetailedDamageDisplay() {
     const move = getMoveData(attackerSide, moveNum);
     
     if (!attackerData || !defenderData || !move) {
-        document.getElementById('mainResult').textContent = 'Select Pokemon and moves to calculate damage';
-        document.getElementById('damageValues').textContent = '';
+        document.getElementById('mainResult').textContent = 'Select sets to view damage calculations';
+        document.getElementById('damageValues').innerHTML = '&nbsp;';
         // Remove existing details if present
         const existingDetails = document.getElementById('koDetails');
         if (existingDetails) {
